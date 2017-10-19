@@ -13,7 +13,7 @@ const API_CLIENT_ID = '<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>',
 /**
  * Performs OAuth 2 authentication with Google to authenticate the extension
  *   and authorizes the extension to use the Google APIs.
- * @param cb {function} Callback
+ * @param postAuthorizationFunction {function} Callback
  */
 this.authenticateExtension = function (postAuthorizationFunction) {
     chrome.identity.getAuthToken({

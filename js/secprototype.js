@@ -1,27 +1,38 @@
 /**
- * Written by Mike Rodrigues
+ * Created by Mike Rodrigues
  * Security Prototype Functionality
  */
 
-/**
- * Helper function which launches the extension's code after OAuth authentication
+this.AUTHORIZED = false;
+
+const switchAuthorizationStatus = function (resp) {
+    this.AUTHORIZED = true;
+};
+
+// Authenticate the extension with Google
+authenticateExtension(switchAuthorizationStatus);
+
+/*******************************************************************************
+ * Email Analysis Functions:
  */
-function processMail () {
-    extensionStorage.retrieveLastCheckTime(fetchEmails);
-}
 
 /**
- * Wrapper function which calls gmail.fetch functions and then executes our logic
- * @returns {promise}
+ * Function to start our email analysis
+ *   Triggered from the listeners.js file by URL change (if a permitted URL)
+ * @param emailId
  */
-function fetchEmails() {
-    return listEmailMessages()
-        .then(pluckMessages)
-        .then(retrieveEmailMessages)
-        .then(preProcessEmails)
-        // TODO: remove console.log
-        .then(console.log);
-}
+this.triggerEmailAnalysis = function (emailId) {
+    this.retrieveSingleEmail(emailId)
+        .then(analyzeEmail);
+};
 
-// Perform OAuth authentication with Google and then begin to process emails
-authenticateExtension(processMail);
+function analyzeEmail (email) {
+    // TODO: Add email analysis algorithm here
+    console.log(email);
+
+    var isPhishing = false;
+
+    if (isPhishing) {
+        alertUser('Attention: Suspected phishing email! Be cautious!');
+    }
+}

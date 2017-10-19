@@ -34,3 +34,10 @@
 * Added initial HTML page which displays when the extension icon is clicked on.
 	* This page will be used for storing user preferences.
 * Added an icon to display for the extension. 
+
+## 10/18/2017 - Mike
+* Added a listener for URL changes for Gmail where a user is viewing an email.
+* Converted the existing architecture to fetch a single email on listener trigger.
+* Created abstract functions to help us handle storage operations for user preferences.
+* Added placeholder function that allows us to add our email analysis.
+* Added placeholder function to alert the user of suspected phishing emails.
