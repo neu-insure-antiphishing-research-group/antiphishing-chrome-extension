@@ -1,5 +1,5 @@
-# mike-extension-poc
-Mike's Chrome Extension PoC Repo
+# INSuRE - Northeastern University IA 8660 Phishing
+Google Chrome Extension Security Prototype
 
 # Development
 * First, replace the `<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>` and `<REPLACE_WITH_KEY_FROM_GOOGLE_CHROME_STORE>` with the appropriate values in `manifest.json`.
