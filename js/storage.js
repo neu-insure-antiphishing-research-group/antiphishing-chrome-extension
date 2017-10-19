@@ -2,24 +2,20 @@
  * Written by Mike Rodrigues
  */
 
+const createRetrieveKeyFunction = function (key) { // createRetrieveKeyFunction('userInterests')
+        return function (cb) {
+            chrome.storage.sync.get(key, cb);
+        }
+    },
+    createSetKeyFunction = function (key) { // createRetrieveKeyFunction('userInterests')
+        return function (val, cb) {
+            var doc = {};
+            doc[key] = val;
+            chrome.storage.sync.set(doc, cb);
+        }
+    };
+
 var storage = {
-    /**
-     * Retrieves the lastCheckTime property from storage
-     * @param cb Callback function
-     */
-    retrieveLastCheckTime: function (cb) {
-        chrome.storage.sync.get('lastCheckTime', cb);
-    },
-
-    /**
-     * Sets the lastCheckTime property in storage
-     * @param time representation of time
-     * @param cb Callback function
-     */
-    setLastCheckTime: function (time, cb) {
-        chrome.storage.sync.set({lastCheckTime: time}, cb);
-    },
-
     /**
      * Debug function used to clear extension storage
      * @param cb optional callback function

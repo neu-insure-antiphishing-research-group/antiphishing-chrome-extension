@@ -1,0 +1,38 @@
+{
+  "name": "IA8660 - Gmail Chrome Extension PoC",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Mike's IA8660 Gmail Extension PoC",
+  // Used only for local development so OAuth works as if local version was installed from the store:
+  "key": "<REPLACE_WITH_KEY_FROM_GOOGLE_CHROME_STORE>",
+  "permissions": [
+    "activeTab",
+    "identity",
+    "storage",
+    "*://*.google.com/*"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "main.html"
+  },
+  "background": {
+    "scripts": [
+      "js/lib/jquery.min.js",
+      "js/lib/underscore.min.js",
+      "js/lib/base64.js",
+      "js/storage.js",
+      "js/listeners.js",
+      "js/gmail.auth.js",
+      "js/gmail.message.js",
+      "js/gmail.fetch.js",
+      "js/secprototype.js"
+    ]
+  },
+  "content_security_policy": "script-src https://*.google.com 'unsafe-eval'; object-src 'self'",
+  "oauth2": {
+    "client_id": "<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.modify"
+    ]
+  }
+}
