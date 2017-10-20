@@ -41,3 +41,11 @@
 * Created abstract functions to help us handle storage operations for user preferences.
 * Added placeholder function that allows us to add our email analysis.
 * Added placeholder function to alert the user of suspected phishing emails.
+
+## 10/20/2017 - Mike
+* Converted the code to retrieve the email thread since it was only retrieving the original email message.
+* Removes sent emails from the thread since we are only scanning incoming email messages.
+* Tweaked the email body parser response if only HTML is available.
+* Limits the data that's returned per email to what is necessary to filter out properties that are unnecessary.
+	* Added from, to, and subject properties - pulled from the headers
+* Changed the extension name and description from Mike's PoC to "INSuRE - NEU Anti-Phishing Extension" 

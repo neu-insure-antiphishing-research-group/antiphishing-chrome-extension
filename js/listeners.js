@@ -11,7 +11,7 @@ const GMAIL_EMAIL_URL_REGEX = /(http|https):\/\/mail.google.com\/mail\/.*\/#inbo
  * @param url {String} URL
  * @returns {String} Email Message Id
  */
-const parseEmailId = function (url) {
+const parseThreadId = function (url) {
     var matches = url.match(GMAIL_EMAIL_ID_REGEX);
     return matches ? matches[0] : matches;
 };
@@ -29,7 +29,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         tab.url.match(GMAIL_EMAIL_URL_REGEX)) {
 
         // Trigger the email analysis:
-        triggerEmailAnalysis(parseEmailId(tab.url));
+        triggerEmailAnalysis(parseThreadId(tab.url));
     }
 
     /*
