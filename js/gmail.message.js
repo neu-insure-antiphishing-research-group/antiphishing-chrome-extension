@@ -12,7 +12,7 @@ const EMPTY_BODY_DATA = {body: {data: ""}};
  * @returns {boolean}
  */
 this.isEmailUnread = function (email) {
-    return _.contains(email.result.labelIds, "UNREAD");
+    return _.contains(email.labelIds, 'UNREAD');
 };
 
 /**
@@ -56,6 +56,11 @@ function findPartWithGivenMime (parts, mime) {
     return EMPTY_BODY_DATA;
 }
 
+this.parseHeaderProperty = function (prop, email) {
+    var subject = _.findWhere(email.payload.headers, {name: prop});
+    return (subject && subject.value) || ''; // Return header value, or blank string if no such property
+};
+
 /**
  * Decodes the Base 64 encoded message body components and returns them.
  *  If HTML and Text are available, then both will be returned {object}.
@@ -65,9 +70,9 @@ function findPartWithGivenMime (parts, mime) {
  */
 this.decodeBodyContents = function (email) {
     try {
-        if (email.result.payload.parts && email.result.payload.parts.length) {
-            var htmlPart = findPartWithGivenMime(email.result.payload.parts, 'text/html'),
-                textPart = findPartWithGivenMime(email.result.payload.parts, 'text/plain');
+        if (email.payload.parts && email.payload.parts.length) {
+            var htmlPart = findPartWithGivenMime(email.payload.parts, 'text/html'),
+                textPart = findPartWithGivenMime(email.payload.parts, 'text/plain');
 
             return { // Only decode if there is actual data to decode
                 html: htmlPart.body.data ? B64.decode(htmlPart.body.data) : htmlPart.body.data,
@@ -75,7 +80,7 @@ this.decodeBodyContents = function (email) {
             };
         }
 
-        return B64.decode(email.result.payload.body.data);
+        return {html: B64.decode(email.payload.body.data)};
     } catch (e) {
         console.log('Email that caused the error:', email);
         throw e;

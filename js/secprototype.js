@@ -1,5 +1,4 @@
 /**
- * Created by Mike Rodrigues
  * Security Prototype Functionality
  */
 
@@ -19,16 +18,16 @@ authenticateExtension(switchAuthorizationStatus);
 /**
  * Function to start our email analysis
  *   Triggered from the listeners.js file by URL change (if a permitted URL)
- * @param emailId
+ * @param threadId
  */
-this.triggerEmailAnalysis = function (emailId) {
-    this.retrieveSingleEmail(emailId)
+this.triggerEmailAnalysis = function (threadId) {
+    retrieveEmailThread(threadId)
         .then(analyzeEmail);
 };
 
-function analyzeEmail (email) {
+function analyzeEmail (receivedEmailsInThread) {
     // TODO: Add email analysis algorithm here
-    console.log(email);
+    console.log(receivedEmailsInThread);
 
     var isPhishing = false;
 

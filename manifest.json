@@ -1,8 +1,8 @@
 {
-  "name": "IA8660 - Gmail Chrome Extension PoC",
+  "name": "INSuRE - NEU Anti-Phishing Extension",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "Mike's IA8660 Gmail Extension PoC",
+  "description": "INSuRE - Anti-Phishing Extension developed by the Phishing Research Team in Northeastern University's IA 8660 course.",
   // Used only for local development so OAuth works as if local version was installed from the store:
   "key": "<REPLACE_WITH_KEY_FROM_GOOGLE_CHROME_STORE>",
   "permissions": [
