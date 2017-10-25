@@ -28,6 +28,12 @@
       "js/secprototype.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/*"],
+      "js": ["js/dom.js"]
+    }
+  ],
   "content_security_policy": "script-src https://*.google.com 'unsafe-eval'; object-src 'self'",
   "oauth2": {
     "client_id": "<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>",

@@ -2,7 +2,8 @@
  * Security Prototype Functionality
  */
 
-this.AUTHORIZED = false;
+var AUTHORIZED = false;
+var PORT = null;
 
 const switchAuthorizationStatus = function (resp) {
     this.AUTHORIZED = true;
@@ -29,9 +30,21 @@ function analyzeEmail (receivedEmailsInThread) {
     // TODO: Add email analysis algorithm here
     console.log(receivedEmailsInThread);
 
-    var isPhishing = false;
+    var isPhishingEmail = false;
 
-    if (isPhishing) {
-        alertUser('Attention: Suspected phishing email! Be cautious!');
-    }
+    displayHtmlStatus(isPhishingEmail);
 }
+
+function displayHtmlStatus(isPhishingEmail) {
+    // Wait for the port to be connected/established before sending data to the client
+    while (!PORT) {}
+    // Alert the listener in js/dom.js so that we can inform the user
+    PORT.postMessage(isPhishingEmail);
+}
+
+/**
+ * Listens for incoming port connections and opens the "backend" port connection
+ */
+chrome.runtime.onConnect.addListener(function(port) {
+    PORT = port;
+});

@@ -48,4 +48,9 @@
 * Tweaked the email body parser response if only HTML is available.
 * Limits the data that's returned per email to what is necessary to filter out properties that are unnecessary.
 	* Added from, to, and subject properties - pulled from the headers
-* Changed the extension name and description from Mike's PoC to "INSuRE - NEU Anti-Phishing Extension" 
+* Changed the extension name and description from Mike's PoC to "INSuRE - NEU Anti-Phishing Extension"
+
+## 10/24/2017 - Mike
+* Finally figured out message passing from the background scripts (security prototype logic) to the content script (js/dom.js) in order for us to notify the user of our findings via HTML pop-up notification.
+	* Tried several different approaches over the past 3 days, but finally found Chrome Runtime Ports to communicate messages between the background and content scripts.
+* Added development setup information and common issue troubleshooting info to the README. 
