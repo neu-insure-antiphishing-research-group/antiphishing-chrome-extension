@@ -1,5 +1,5 @@
 .idea
 **/.DS_Store
 manifest.json
-js/gmail.auth.js
+js/background/gmail/auth.js
 *.patch
