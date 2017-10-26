@@ -69,3 +69,4 @@
 	* The previous static design required static HTML creation and updates to the list in the JavaScript code as well.
 	* Now, we only need to add items to the interests array in the JavaScript and the HTML will be generated.
 	* Since there is one list, we won't have any issues with saving/loading/resetting values or typos causing bugs.
+* Adding screenshot of dynamically generated UI.
