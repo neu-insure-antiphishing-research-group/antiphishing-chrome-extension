@@ -1,0 +1,24 @@
+body {
+    width: 500px;
+    max-height: 520px;
+    padding:10px;
+    overflow: hidden;
+}
+
+#form {
+    overflow-y: scroll;
+}
+
+#action-box {
+    padding-top: 10px;
+}
+
+label {
+    text-align: center;
+}
+
+#close-icon {
+    color: crimson;
+    font-weight: bold;
+    cursor: pointer;
+}
