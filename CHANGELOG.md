@@ -48,4 +48,25 @@
 * Tweaked the email body parser response if only HTML is available.
 * Limits the data that's returned per email to what is necessary to filter out properties that are unnecessary.
 	* Added from, to, and subject properties - pulled from the headers
-* Changed the extension name and description from Mike's PoC to "INSuRE - NEU Anti-Phishing Extension" 
+* Changed the extension name and description from Mike's PoC to "INSuRE - NEU Anti-Phishing Extension"
+
+## 10/24/2017 - Mike
+* Finally figured out message passing from the background scripts (security prototype logic) to the content script (js/dom.js) in order for us to notify the user of our findings via HTML pop-up notification.
+	* Tried several different approaches over the past 3 days, but finally found Chrome Runtime Ports to communicate messages between the background and content scripts.
+* Added development setup information and common issue troubleshooting info to the README.
+
+## 10/25/2017 - Mike
+* Added a preliminary HTML popup page which prompts users for their interest information.
+* Converted the page to use Bootstrap toggles for simple inputs (ideal for user experience).
+* Wired the page to save to Chrome local storage (can be easily adapted if different storage option is chosen).
+* Wired the page to retrieve and display interests on popup page load.
+* Wired the page to allow users to reset their interests.
+* Managed to link the background and content scripts to simplify the storage solution to use the same code/file.
+ 
+## 10/26/2017 - Mike
+* Converted the User Interests popup page to be dynamically generated.
+	* This simplifies the form so that we only need to manage one list of interests.
+	* The previous static design required static HTML creation and updates to the list in the JavaScript code as well.
+	* Now, we only need to add items to the interests array in the JavaScript and the HTML will be generated.
+	* Since there is one list, we won't have any issues with saving/loading/resetting values or typos causing bugs.
+* Adding screenshot of dynamically generated UI.

@@ -17,17 +17,22 @@
   },
   "background": {
     "scripts": [
-      "js/lib/jquery.min.js",
       "js/lib/underscore.min.js",
       "js/lib/base64.js",
-      "js/storage.js",
-      "js/listeners.js",
-      "js/gmail.auth.js",
-      "js/gmail.message.js",
-      "js/gmail.fetch.js",
-      "js/secprototype.js"
+      "js/background/storage.js",
+      "js/background/listeners.js",
+      "js/background/gmail/auth.js",
+      "js/background/gmail/message.js",
+      "js/background/gmail/fetch.js",
+      "js/background/secprototype.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/*"],
+      "js": ["js/content/dom.js"]
+    }
+  ],
   "content_security_policy": "script-src https://*.google.com 'unsafe-eval'; object-src 'self'",
   "oauth2": {
     "client_id": "<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>",
