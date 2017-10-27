@@ -1,5 +1,5 @@
 /**
- * Written by: Mike Rodrigues
+ * Written by Mike Rodrigues
  * Links DOM elements to event listeners so that we can perform onclick actions
  *   within the HTML page.  By default, Chrome Extensions do not allow inline
  *   JavaScript call attributes (ie. onclick) for security reasons.
