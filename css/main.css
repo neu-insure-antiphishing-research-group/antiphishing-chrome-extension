@@ -1,24 +1,39 @@
-body {
-    width: 500px;
-    max-height: 520px;
-    padding:10px;
-    overflow: hidden;
+/**
+ * CSS for all versions of the page (pop-up and full-page)
+ */
+@media screen {
+    #form {
+        overflow-y: scroll;
+    }
+
+    .row > h2,
+    .row > p {
+        text-align: center;
+    }
+
+    #action-box {
+        padding-top: 10px;
+    }
+
+    label {
+        text-align: center;
+    }
+
+    #close-icon {
+        color: crimson;
+        font-weight: bold;
+        cursor: pointer;
+    }
 }
 
-#form {
-    overflow-y: scroll;
-}
-
-#action-box {
-    padding-top: 10px;
-}
-
-label {
-    text-align: center;
-}
-
-#close-icon {
-    color: crimson;
-    font-weight: bold;
-    cursor: pointer;
+/**
+ * CSS Specific to the pop-up version of the page (based on the width)
+ */
+@media screen and (max-width: 550px) {
+    body {
+        width: 500px;
+        max-height: 520px;
+        padding:10px;
+        overflow: hidden;
+    }
 }
