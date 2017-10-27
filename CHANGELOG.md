@@ -79,3 +79,4 @@
 * Fixing an issue with the message sharing where the extension would hang if the background-content script port connection was not established.
 	* Added a console message to explain what is happening and how to fix it.
 	* Also reworked the message sharing component in the background script to allow execution to continue.
+* Adding documentation to the js/ui/interests.js file functions.
