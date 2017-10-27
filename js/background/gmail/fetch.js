@@ -57,6 +57,7 @@ function processSingleEmail (email) {
         emailMessage: decodeBodyContents(email)
     };
 
+    // If an HTML body part exists for the message, convert it to a DOM representation via Jquery
     if (msg.emailMessage.html) {
         msg.emailMessage.html = $.parseHTML(msg.emailMessage.html)
     }
