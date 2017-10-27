@@ -74,7 +74,8 @@
 ## 10/27/2017 - Mike
 * Identified a simple way to open the interests pop-up when the extension is installed.
 * Implemented that approach, but the display is a little strange since the CSS was for the pop-up window.
-* I will look into better styling to handle the pop-up and full-page (post install) scenarios.
+* The CSS was broken in the full-page version based on the understanding that this was pop-up only.
+	* Using @media selectors and CSS queries, I fixed the display CSS to allow for the same display on pop-up and full-page displays. 
 * Parsing HTML body string to a DOM hierarchy via JQuery for an easier approach to finding 'a' tags in the HTML.
 * Fixing an issue with the message sharing where the extension would hang if the background-content script port connection was not established.
 	* Added a console message to explain what is happening and how to fix it.
