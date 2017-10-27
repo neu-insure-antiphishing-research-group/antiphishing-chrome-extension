@@ -75,3 +75,4 @@
 * Identified a simple way to open the interests pop-up when the extension is installed.
 * Implemented that approach, but the display is a little strange since the CSS was for the pop-up window.
 * I will look into better styling to handle the pop-up and full-page (post install) scenarios.
+* Parsing HTML body string to a DOM hierarchy via JQuery for an easier approach to finding 'a' tags in the HTML.
