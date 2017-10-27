@@ -70,3 +70,8 @@
 	* Now, we only need to add items to the interests array in the JavaScript and the HTML will be generated.
 	* Since there is one list, we won't have any issues with saving/loading/resetting values or typos causing bugs.
 * Adding screenshot of dynamically generated UI.
+
+## 10/27/2017 - Mike
+* Identified a simple way to open the interests pop-up when the extension is installed.
+* Implemented that approach, but the display is a little strange since the CSS was for the pop-up window.
+* I will look into better styling to handle the pop-up and full-page (post install) scenarios.
