@@ -23,21 +23,23 @@ authenticateExtension(switchAuthorizationStatus);
  */
 this.triggerEmailAnalysis = function (threadId) {
     retrieveEmailThread(threadId)
-        .then(analyzeEmail);
+        .then(analyzeEmail)
+        .then(displayHtmlStatus)
 };
 
 function analyzeEmail (receivedEmailsInThread) {
     // TODO: Add email analysis algorithm here
     console.log(receivedEmailsInThread);
 
-    var isPhishingEmail = false;
-
-    displayHtmlStatus(isPhishingEmail);
+    // return our result:
+    return false;
 }
 
 function displayHtmlStatus(isPhishingEmail) {
+    console.log('display pre-port');
     // Wait for the port to be connected/established before sending data to the client
-    while (!PORT) {}
+    // while (!PORT) {}
+    console.log('display post-port');
     // Alert the listener in js/dom.js so that we can inform the user
     PORT.postMessage(isPhishingEmail);
 }
@@ -46,5 +48,6 @@ function displayHtmlStatus(isPhishingEmail) {
  * Listens for incoming port connections and opens the "backend" port connection
  */
 chrome.runtime.onConnect.addListener(function(port) {
+    console.log('port established');
     PORT = port;
 });
