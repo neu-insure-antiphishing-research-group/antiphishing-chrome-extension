@@ -17,6 +17,7 @@
   },
   "background": {
     "scripts": [
+      "js/lib/jquery.min.js",
       "js/lib/underscore.min.js",
       "js/lib/base64.js",
       "js/background/storage.js",

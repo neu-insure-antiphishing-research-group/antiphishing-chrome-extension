@@ -47,7 +47,7 @@ function filterOutSentEmails (emails) {
  */
 function processSingleEmail (email) {
     // Return an object with just the following properties from the emails
-    return {
+    var msg = {
         emailId: email.id,
         from: parseHeaderProperty('From', email),
         to: parseHeaderProperty('To', email),
@@ -56,6 +56,12 @@ function processSingleEmail (email) {
         subject: parseHeaderProperty('Subject', email),
         emailMessage: decodeBodyContents(email)
     };
+
+    if (msg.emailMessage.html) {
+        msg.emailMessage.html = $.parseHTML(msg.emailMessage.html)
+    }
+
+    return msg;
 }
 
 /**
