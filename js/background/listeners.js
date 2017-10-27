@@ -37,3 +37,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
          and therefore we do not need to do anything
      */
 });
+
+/**
+ * Open the interests pop-up on extension install.
+ */
+chrome.runtime.onInstalled.addListener(function (object) {
+    chrome.tabs.create({url: "main.html"}, _.noop);
+});
