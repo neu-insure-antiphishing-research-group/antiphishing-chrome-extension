@@ -81,3 +81,6 @@
 	* Added a console message to explain what is happening and how to fix it.
 	* Also reworked the message sharing component in the background script to allow execution to continue.
 * Adding documentation to the js/ui/interests.js file functions.
+* Converting the user notification to use the chrome.notifications API to fix a bug and improve reliability.
+	* Notifications appear for about 5 seconds in the top right corner of Chrome and then automatically disappear automatically.
+	* The message can be fine-tuned later on too depending on the results.
