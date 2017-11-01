@@ -33,6 +33,7 @@ this.triggerEmailAnalysis = function (threadId) {
  */
 function analyzeEmail (receivedEmailsInThread) {
     // TODO: Add email analysis algorithm here
+    var interestsDatabase = flattenedInterestDatabase();
     console.log(receivedEmailsInThread);
 
     // return our algorithms result to pass to the displayHtmlStatus function

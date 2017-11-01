@@ -84,3 +84,9 @@
 * Converting the user notification to use the chrome.notifications API to fix a bug and improve reliability.
 	* Notifications appear for about 5 seconds in the top right corner of Chrome and then automatically disappear automatically.
 	* The message can be fine-tuned later on too depending on the results.
+	
+## 11/1/2017 - Mike
+* Implementing the "database" storage approach that we discussed in class last Friday.
+	* Also added a function which "flattens" the database so we can programmatically access the interests by key without needing to deal with the categories that are built into the DB structure.
+* Adding a screenshot of the email console output for use in our midterm presentation slides.
+* This will likely be expanded upon to link the UI form creation to this DB so that we will have a single list of interests to be updated.
