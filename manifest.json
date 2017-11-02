@@ -9,6 +9,7 @@
     "activeTab",
     "identity",
     "storage",
+    "notifications",
     "*://*.google.com/*"
   ],
   "browser_action": {
@@ -25,15 +26,10 @@
       "js/background/gmail/auth.js",
       "js/background/gmail/message.js",
       "js/background/gmail/fetch.js",
-      "js/background/secprototype.js"
+      "js/background/secprototype.js",
+      "js/background/notifier.js"
     ]
   },
-  "content_scripts": [
-    {
-      "matches": ["*://*.google.com/*"],
-      "js": ["js/content/dom.js"]
-    }
-  ],
   "content_security_policy": "script-src https://*.google.com 'unsafe-eval'; object-src 'self'",
   "oauth2": {
     "client_id": "<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>",
