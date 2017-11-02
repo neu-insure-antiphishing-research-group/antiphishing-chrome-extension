@@ -27,6 +27,7 @@
       "js/background/gmail/message.js",
       "js/background/gmail/fetch.js",
       "js/background/secprototype.js",
+      "js/background/database.js",
       "js/background/notifier.js"
     ]
   },
