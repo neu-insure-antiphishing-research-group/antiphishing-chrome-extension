@@ -90,3 +90,8 @@
 	* Also added a function which "flattens" the database so we can programmatically access the interests by key without needing to deal with the categories that are built into the DB structure.
 * Adding a screenshot of the email console output for use in our midterm presentation slides.
 * This will likely be expanded upon to link the UI form creation to this DB so that we will have a single list of interests to be updated.
+
+## 11/2/2017 - Mike
+* Implementing the parsing of A tag HREF attributes (URL Links) from the JQuery parsed HTML (DOM element array)
+	* Finds the A tags, then pulls just the href attribute from the tag.
+	* All links from emails will now be accessible via the 'links' attribute of the message object that our security prototype will review. 

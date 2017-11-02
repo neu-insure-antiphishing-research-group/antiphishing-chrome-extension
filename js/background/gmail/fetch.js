@@ -59,10 +59,19 @@ function processSingleEmail (email) {
 
     // If an HTML body part exists for the message, convert it to a DOM representation via Jquery
     if (msg.emailMessage.html) {
-        msg.emailMessage.html = $.parseHTML(msg.emailMessage.html)
+        msg.emailMessage.html = $.parseHTML(msg.emailMessage.html);
+        var allATags = $('a', msg.emailMessage.html);
+        msg.links = _.map(allATags, parseHrefFromATag);
     }
 
     return msg;
+}
+
+/**
+ * Parses the HREF attribute from an A tag DOM object
+ */
+function parseHrefFromATag(aTag) {
+    return aTag.href;
 }
 
 /**
