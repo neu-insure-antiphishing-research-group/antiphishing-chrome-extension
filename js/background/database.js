@@ -5,10 +5,13 @@
 
 const interestUrlWhitelist = {
     banks: {
-        bankOfAmerica: ['bankofamerica.com', 'bofa.com']
+        bankOfAmerica: {urls: ['bankofamerica.com', 'bofa.com']}
     },
     socialMedia: {
-        facebook: ['facebook.com', 'messenger.com', 'fb.com']
+        facebook: {urls: ['facebook.com', 'messenger.com', 'fb.com']}
+    },
+    services: {
+        apple: {urls: ['apple.com', 'mac.com', 'iphone.com']}
     }
 };
 
