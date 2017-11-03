@@ -27,27 +27,14 @@ this.triggerEmailAnalysis = function (threadId) {
         .then(notifyUser);
 };
 
-function fetchUserInterests(receivedEmailsInThread) {
-    var interestsDatabase = flattenedInterestDatabase();
-
-    // Allow us to return the interests into the Promise chain despite the
-    //   storage functions requiring a callback
-    return new Promise(function (resolve, reject) {
-        ui.retrieveInterests(function (data) {
-            data.userInterests ? data.userInterests : {};
-
-            // Merge the user's selected interests with the database values
-            _.each(data.userInterests, function (value, key) {
-                interestsDatabase[key].userHoldsAccount = value;
-            });
-
-            // Returns the merged interests data and the thread emails
-            return resolve({
-                interests: interestsDatabase,
-                receivedEmailsInThread: receivedEmailsInThread
-            });
-        });
-    });
+function fetchUserInterests(emails) {
+    return createDbUserInterestsCombo()
+        .then(function (interests) {
+            return {
+                interests: interests,
+                emails: emails
+            };
+        })
 }
 
 /**
