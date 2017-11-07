@@ -94,4 +94,12 @@
 ## 11/2/2017 - Mike
 * Implementing the parsing of A tag HREF attributes (URL Links) from the JQuery parsed HTML (DOM element array)
 	* Finds the A tags, then pulls just the href attribute from the tag.
-	* All links from emails will now be accessible via the 'links' attribute of the message object that our security prototype will review. 
+	* All links from emails will now be accessible via the 'links' attribute of the message object that our security prototype will review.
+
+## 11/3/2017 - Mike
+* Adding functionality to retrieve the user's interests in our secprototype.js file
+* Merges the user's interests with the data from our file database
+* Returns this merged information to our security prototype analysis function.
+* Converts the UI to generate the interests inputs based on the interests listed in the database.
+	* Converted to a single list for simpler updating.
+	* Provides us with more information on the UI too, which allows for future feature additions.

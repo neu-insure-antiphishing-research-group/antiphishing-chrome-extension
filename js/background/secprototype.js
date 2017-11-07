@@ -22,19 +22,29 @@ authenticateExtension(switchAuthorizationStatus);
  */
 this.triggerEmailAnalysis = function (threadId) {
     retrieveEmailThread(threadId)
+        .then(fetchUserInterests)
         .then(analyzeEmail)
         .then(notifyUser);
 };
 
+function fetchUserInterests(emails) {
+    return createDbUserInterestsCombo()
+        .then(function (interests) {
+            return {
+                interests: interests,
+                emails: emails
+            };
+        })
+}
+
 /**
  * Placeholder function for handling our algorithm/email analysis.
- * @param receivedEmailsInThread array of email objects
+ * @param params object containing the user's interests and thread emails
  * @returns {boolean}
  */
-function analyzeEmail (receivedEmailsInThread) {
+function analyzeEmail (params) {
     // TODO: Add email analysis algorithm here
-    var interestsDatabase = flattenedInterestDatabase();
-    console.log(receivedEmailsInThread);
+    console.log(params);
 
     // return our algorithms result to pass to the displayHtmlStatus function
     return false;
