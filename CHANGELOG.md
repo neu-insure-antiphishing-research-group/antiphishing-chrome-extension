@@ -99,4 +99,7 @@
 ## 11/3/2017 - Mike
 * Adding functionality to retrieve the user's interests in our secprototype.js file
 * Merges the user's interests with the data from our file database
-* Returns this merged information to our security prototype analysis function. 
+* Returns this merged information to our security prototype analysis function.
+* Converts the UI to generate the interests inputs based on the interests listed in the database.
+	* Converted to a single list for simpler updating.
+	* Provides us with more information on the UI too, which allows for future feature additions.

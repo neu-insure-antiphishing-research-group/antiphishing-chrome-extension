@@ -6,14 +6,6 @@
  */
 
 /**
- * A list of all interests which will be displayed in the HTML pop-up.
- */
-const interests = [
-    { id: 'apple', name: 'Apple' },
-    { id: 'facebook', name: 'Facebook' }
-];
-
-/**
  * A listener which fires when our interests page loads.
  * This is needed, since Google Chrome Extensions cannot use 'onclick' attributes
  * Instead, we need to add event listeners to the buttons
@@ -59,13 +51,14 @@ function buildInterestLabel (interest) {
 
 /**
  * Creates the input for each interest
+ * @param interestId
  * @param interest
  * @returns {Element}
  */
-function buildInterestInput (interest) {
+function buildInterestInput (interestId, interest) {
     var input = document.createElement('input');
 
-    input.id = interest.id;
+    input.id = interestId;
     input.title = interest.name;
     input.className = 'col-xs-2';
     input.type = 'checkbox';
@@ -76,13 +69,14 @@ function buildInterestInput (interest) {
 /**
  * Function which builds the div element for each interest
  *   This uses helper functions to create the associated label and inputs.
+ * @param interestId
  * @param interest
  * @returns {Element}
  */
-function buildInterestDiv (interest) {
+function buildInterestDiv (interestId, interest) {
     var div = document.createElement('div'),
         label = buildInterestLabel(interest),
-        input = buildInterestInput(interest);
+        input = buildInterestInput(interestId, interest);
 
     div.appendChild(label);
     div.appendChild(input);
@@ -102,27 +96,31 @@ function buildInterestsForm (savedData) {
     // clear the form
     interestsDiv.innerHTML = '';
 
-    // for each interest, build the div, and set the default value
-    _.each(interests, function (interest) {
-        // construct the div element for each
-        var div = buildInterestDiv(interest);
+    createDbUserInterestsCombo()
+        .then(function (interests) {
+            console.log(interests);
 
-        // append the created div into the form
-        interestsDiv.append(div);
+            // for each interest, build the div, and set the default value
+            _.each(interests, function (interest, interestId) {
+                // construct the div element for each
+                var div = buildInterestDiv(interestId, interest);
 
-        // retrieve the injected input
-        var input = $('#' + interest.id);
+                // append the created div into the form
+                interestsDiv.append(div);
 
-        // instantiate the input that was added as a Bootstrap Toggle switch
-        input.bootstrapToggle({
-            on: 'Yes',
-            off: 'No'
+                // retrieve the injected input
+                var input = $('#' + interestId);
+
+                // instantiate the input that was added as a Bootstrap Toggle switch
+                input.bootstrapToggle({
+                    on: 'Yes',
+                    off: 'No'
+                });
+
+                // set the value of the toggle based on the saved value
+                input.bootstrapToggle(interest.userHoldsAccount ? 'on' : 'off');
+            });
         });
-
-        // set the value of the toggle based on the saved value
-        var checked = savedData && savedData.userInterests && savedData.userInterests[interest.id] || false;
-        input.bootstrapToggle(checked ? 'on' : 'off');
-    });
 }
 
 /**
@@ -133,8 +131,8 @@ function processInterests () {
     var form = document.getElementById('form'),
         dataToSave = {};
 
-    _.each(interests, function (interest) {
-        dataToSave[interest.id] = form[interest.id].checked;
+    _.each(flattenedInterestDatabase(), function (interest, interestId) {
+        dataToSave[interestId] = form[interestId].checked;
     });
 
     ui.saveInterests(dataToSave);
