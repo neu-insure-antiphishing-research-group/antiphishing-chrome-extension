@@ -21,11 +21,13 @@
       "js/lib/jquery.min.js",
       "js/lib/underscore.min.js",
       "js/lib/base64.js",
+      "js/background/constants.js",
       "js/background/storage.js",
       "js/background/listeners.js",
       "js/background/gmail/auth.js",
       "js/background/gmail/message.js",
       "js/background/gmail/fetch.js",
+      "js/background/safebrowsing/check.js",
       "js/background/secprototype.js",
       "js/background/database.js",
       "js/background/notifier.js"

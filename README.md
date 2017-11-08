@@ -2,7 +2,7 @@
 Google Chrome Extension Security Prototype
 
 # Development
-* Open the `manifest.json` and `js/gmail.auth.js` files in your favorite editor.
+* Open the `manifest.json` and `js/background/constants.js` files in your favorite editor.
 * Next, find the Google Chrome Web Store ID Key (`<REPLACE_WITH_KEY_FROM_GOOGLE_CHROME_STORE>`) in the WhatsApp chat, or follow this guide to find the key:
 	* https://developer.chrome.com/apps/app_identity#copy_key
 	* This key only appears in `manifest.json`.
@@ -13,7 +13,15 @@ Google Chrome Extension Security Prototype
 		* Select Chrome App
 		* Enter a name for the API key
 		* Enter the application ID (`dnhelbabcagmogieibbhhmlmgfcmajon`)
-	* This key should be inserted into the `manifest.json` and `js/gmail.auth.js` files.
+	* This key should be inserted into the `manifest.json` and `js/background/constants.js` files.
+* Finally, replace the Google Safe Browsing API Key placeholder (`<REPLACE_WITH_GOOGLE_SAFE_BROWSING_KEY`)
+	* To create an API key, complete the following steps:
+		* Open https://console.developers.google.com/apis/credentials
+		* Create Credentials
+		* API Key
+		* Copy the API Key that is generated
+		* Paste it in to replace the placeholder.
+	* This key should be inserted into the `js/background/constants.js` file.
 
 ## Key Sensitivity
 Since API Keys are inherently sensitive (as they can be used by others), they should not be checked into any public repositories.

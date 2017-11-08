@@ -6,8 +6,7 @@
 /**
  * Constants for the API ID, API Permissions requested, and the Google API JS Script URL
  */
-const API_CLIENT_ID = '<REPLACE_WITH_GOOGLE_GMAIL_API_KEY_ID>',
-    API_CLIENT_PERMISSION = 'https://www.googleapis.com/auth/gmail.modify',
+const API_CLIENT_PERMISSION = 'https://www.googleapis.com/auth/gmail.modify',
     GAPI_SCRIPT_URL = 'https://apis.google.com/js/client.js';
 
 /**
@@ -21,7 +20,7 @@ this.authenticateExtension = function (postAuthorizationFunction) {
     }, function(){
         window.gapi_onload = function () {
             gapi.auth.authorize({
-                    client_id: API_CLIENT_ID,
+                    client_id: GMAIL_API_CLIENT_ID,
                     immediate: false,
                     scope: API_CLIENT_PERMISSION
                 }, function(){

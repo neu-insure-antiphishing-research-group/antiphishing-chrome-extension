@@ -15,7 +15,8 @@ this.retrieveEmailThread = function (threadId) {
     })
         .then(pluckEmailsFromThread)
         .then(filterOutSentEmails)
-        .then(processEmails);
+        .then(processEmails)
+        .then(fetchSafeBrowsingInformation);
 };
 
 /**

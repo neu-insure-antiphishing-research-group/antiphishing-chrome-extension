@@ -103,3 +103,8 @@
 * Converts the UI to generate the interests inputs based on the interests listed in the database.
 	* Converted to a single list for simpler updating.
 	* Provides us with more information on the UI too, which allows for future feature additions.
+	
+## 11/8/2017 - Mike
+* Integrating Google's Safe Browsing API to check the links that in each email.
+	* Encountered an issue where the API was returning a 400 response when it should have been a 403 per Google's API documentation.
+	* Quite simply, the API key was incorrect (was trying to use the OAuth ID instead of a new API Key).
