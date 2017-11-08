@@ -3,7 +3,7 @@
  * Event Listeners
  */
 
-const GMAIL_EMAIL_URL_REGEX = /(http|https):\/\/mail.google.com\/mail\/.*\/#inbox\/[1234567890abcdef]{16}/,
+const GMAIL_EMAIL_URL_REGEX = /(http|https):\/\/mail.google.com\/mail\/.*\/#.*\/[1234567890abcdef]{16}/,
     GMAIL_EMAIL_ID_REGEX = /[1234567890abcdef]{16}$/;
 
 /**
