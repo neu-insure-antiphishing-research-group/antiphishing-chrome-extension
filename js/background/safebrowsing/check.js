@@ -40,8 +40,7 @@ this.safeBrowsingCheck = function (urls) {
 
         r.open('POST', SAFE_BROWSING_QUERY_URL);
         r.send(postBody);
-    })
-        .then(responseParser);
+    }).then(responseParser);
 };
 
 /**
@@ -55,3 +54,20 @@ function responseParser(response) {
     }
     return [];
 }
+
+/**
+ * Helper function for secprototype.js which performs a single threat check against all email links in the thread.
+ * @param params
+ * @returns {*}
+ */
+this.fetchSafeBrowsingInformation = function (params) {
+    var emailLinks = _.flatten(_.pluck(params.emails, 'links'));
+    // Remove any email 'mailto:' type links (Google's API doesn't check these and errors out).
+    emailLinks = _.reject(emailLinks, function (link) { return link.indexOf('mailto:') === 0; });
+
+    return safeBrowsingCheck(emailLinks)
+        .then(function (threats) {
+            params.linkThreats = threats;
+            return params;
+        });
+};

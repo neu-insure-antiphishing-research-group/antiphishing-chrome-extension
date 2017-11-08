@@ -108,3 +108,6 @@
 * Integrating Google's Safe Browsing API to check the links that in each email.
 	* Encountered an issue where the API was returning a 400 response when it should have been a 403 per Google's API documentation.
 	* Quite simply, the API key was incorrect (was trying to use the OAuth ID instead of a new API Key).
+* Modified Safe browsing API check to only occur once per email thread to save calls and time.
+	* All links are aggregated and then checked by the API.
+	* We then have access to all threats, threat type, and the associated link in our analysis function.
