@@ -43,8 +43,7 @@ this.flattenedInterestDatabase = function () {
 };
 
 /**
- *
- * @param receivedEmailsInThread
+ * Helper function that combines the user's stored interests and the database info
  * @returns {Promise} value provided to .then will be an object with
  */
 this.createDbUserInterestsCombo = function () {
@@ -65,4 +64,19 @@ this.createDbUserInterestsCombo = function () {
             return resolve(interestsDatabase);
         });
     });
+};
+
+/**
+ * Helper function for our secprototype.js file that adds user interests for our analysis.
+ * @param emails
+ * @returns {*}
+ */
+this.fetchUserInterests = function (emails) {
+    return createDbUserInterestsCombo()
+        .then(function (interests) {
+            return {
+                interests: interests,
+                emails: emails
+            };
+        })
 };

@@ -103,3 +103,13 @@
 * Converts the UI to generate the interests inputs based on the interests listed in the database.
 	* Converted to a single list for simpler updating.
 	* Provides us with more information on the UI too, which allows for future feature additions.
+	
+## 11/8/2017 - Mike
+* Integrating Google's Safe Browsing API to check the links that in each email.
+	* Encountered an issue where the API was returning a 400 response when it should have been a 403 per Google's API documentation.
+	* Quite simply, the API key was incorrect (was trying to use the OAuth ID instead of a new API Key).
+* Modified Safe browsing API check to only occur once per email thread to save calls and time.
+	* All links are aggregated and then checked by the API.
+	* We then have access to all threats, threat type, and the associated link in our analysis function.
+* Found a bug where the URL listener wasn't firing for emails with specific labels (eg. the Promotions label in Gmail).
+	* Identified that the Regex was not matching, so I updated the Regex so it will trigger for these URL formats as well.

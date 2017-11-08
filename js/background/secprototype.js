@@ -23,19 +23,10 @@ authenticateExtension(switchAuthorizationStatus);
 this.triggerEmailAnalysis = function (threadId) {
     retrieveEmailThread(threadId)
         .then(fetchUserInterests)
+        .then(fetchSafeBrowsingInformation)
         .then(analyzeEmail)
         .then(notifyUser);
 };
-
-function fetchUserInterests(emails) {
-    return createDbUserInterestsCombo()
-        .then(function (interests) {
-            return {
-                interests: interests,
-                emails: emails
-            };
-        })
-}
 
 /**
  * Placeholder function for handling our algorithm/email analysis.
@@ -46,6 +37,7 @@ function analyzeEmail (params) {
     // TODO: Add email analysis algorithm here
     console.log(params);
 
+    // TODO: currently our prototype will detect phishing if and only if Google's Safe Browsing API returns a threat
     // return our algorithms result to pass to the displayHtmlStatus function
-    return false;
+    return params.linkThreats.length;
 }
