@@ -1,6 +1,6 @@
 {
   "name": "INSuRE - NEU Anti-Phishing Extension",
-  "version": "1.0",
+  "version": "2.0",
   "manifest_version": 2,
   "description": "INSuRE - Anti-Phishing Extension developed by the Phishing Research Team in Northeastern University's IA 8660 course.",
   // Used only for local development so OAuth works as if local version was installed from the store:
