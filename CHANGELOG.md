@@ -113,3 +113,5 @@
 	* We then have access to all threats, threat type, and the associated link in our analysis function.
 * Found a bug where the URL listener wasn't firing for emails with specific labels (eg. the Promotions label in Gmail).
 	* Identified that the Regex was not matching, so I updated the Regex so it will trigger for these URL formats as well.
+* Updating to version 2.0
+* Adding cropped version of icon and mini version for Chrome Web Store.
