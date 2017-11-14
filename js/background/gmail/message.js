@@ -56,9 +56,37 @@ function findPartWithGivenMime (parts, mime) {
     return EMPTY_BODY_DATA;
 }
 
+/**
+ * Abstract function to parse a property value from a message header
+ * @param prop {String} property name
+ * @param email {Object} email message
+ * @returns {*|string}
+ */
 this.parseHeaderProperty = function (prop, email) {
     var subject = _.findWhere(email.payload.headers, {name: prop});
     return (subject && subject.value) || ''; // Return header value, or blank string if no such property
+};
+
+/**
+ * Parses the HREF attribute from an A tag DOM object
+ * @param aTag {Object} DOM element
+ */
+this.parseHrefFromATag = function (aTag) {
+    return aTag.href;
+};
+
+/**
+ * Creates a word frequency map for each word in the email message plaintext body
+ * @param emailMessage
+ * @returns {*}
+ */
+this.createWordMapFromMessage = function (emailMessage) {
+    const splitItem = /\s|\r|\n|\t/g; // space
+    var words = emailMessage && emailMessage.text.split(splitItem);
+
+    return _.countBy(words, function(word) {
+        return word;
+    });
 };
 
 /**
