@@ -56,6 +56,7 @@ function processSingleEmail (email) {
         subject: parseHeaderProperty('Subject', email),
         emailMessage: decodeBodyContents(email)
     };
+    msg.wordMap = createWordMapFromMessage(msg.emailMessage);
 
     // If an HTML body part exists for the message, convert it to a DOM representation via Jquery
     if (msg.emailMessage.html) {
@@ -65,13 +66,6 @@ function processSingleEmail (email) {
     }
 
     return msg;
-}
-
-/**
- * Parses the HREF attribute from an A tag DOM object
- */
-function parseHrefFromATag(aTag) {
-    return aTag.href;
 }
 
 /**

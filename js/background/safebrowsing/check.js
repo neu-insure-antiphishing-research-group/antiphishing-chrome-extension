@@ -62,8 +62,10 @@ function responseParser(response) {
  */
 this.fetchSafeBrowsingInformation = function (params) {
     var emailLinks = _.flatten(_.pluck(params.emails, 'links'));
-    // Remove any email 'mailto:' type links (Google's API doesn't check these and errors out).
-    emailLinks = _.reject(emailLinks, function (link) { return link.indexOf('mailto:') === 0; });
+    // Remove any email 'mailto:' or 'tel:' type links (Google's API doesn't check these and errors out).
+    emailLinks = _.reject(emailLinks, function (link) {
+        return link.indexOf('mailto:') === 0 || link.indexOf('tel:') === 0;
+    });
 
     return safeBrowsingCheck(emailLinks)
         .then(function (threats) {

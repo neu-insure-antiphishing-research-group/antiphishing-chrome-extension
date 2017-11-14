@@ -115,3 +115,10 @@
 	* Identified that the Regex was not matching, so I updated the Regex so it will trigger for these URL formats as well.
 * Updating to version 2.0
 * Adding cropped version of icon and mini version for Chrome Web Store.
+
+## 11/14/2017 - Mike
+* Adding functionality to split messages to get a list of number of times each word occurs in messages.
+* Adding keyword database of phishing keywords
+	* Added temporary values, which will be updated as soon as correct keywords are obtained from Harshit.
+* Word frequency mapping is passed to our security prototype algorithm analysis function for final review.
+* Fixing bug where 'tel:' links were breaking Google Safe Browsing check
