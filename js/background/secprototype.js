@@ -24,6 +24,7 @@ this.triggerEmailAnalysis = function (threadId) {
     retrieveEmailThread(threadId)
         .then(fetchUserInterests)
         .then(fetchSafeBrowsingInformation)
+        .then(createKeywordMap)
         .then(analyzeEmail)
         .then(notifyUser);
 };
@@ -34,10 +35,21 @@ this.triggerEmailAnalysis = function (threadId) {
  * @returns {boolean}
  */
 function analyzeEmail (params) {
-    // TODO: Add email analysis algorithm here
     console.log(params);
 
     // TODO: currently our prototype will detect phishing if and only if Google's Safe Browsing API returns a threat
-    // return our algorithms result to pass to the displayHtmlStatus function
+
+    var numKeywordMatches = 0;
+    _.each(PHISHING_KEYWORDS, function (phishingKeyword) {
+        if (params.keywordMap[phishingKeyword]) {
+            numKeywordMatches++;
+        }
+    });
+
+    console.log('Number of keyword matches: ' + numKeywordMatches);
+
+    // return our algorithm's result in order to notify the user
+    //  false --> no phishing detected
+    //  true  --> phishing detected
     return params.linkThreats.length;
 }

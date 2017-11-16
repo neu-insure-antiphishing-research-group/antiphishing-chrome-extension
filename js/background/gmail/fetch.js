@@ -76,3 +76,28 @@ function processSingleEmail (email) {
 function processEmails (emails) {
     return _.map(emails, processSingleEmail);
 }
+
+/**
+ * Creates a single mapping of all words that occur in all emails to their frequencies
+ * @param params
+ */
+this.createKeywordMap = function (params) {
+    var emails = params.emails;
+
+    var keywords = _.pluck(emails, 'wordMap');
+    var totalNumWords = 0;
+
+    // Walk through all frequency mappings and tally the occurrences per word
+    params.keywordMap = _.reduce(keywords, function (keywordMapping, keywordMap) {
+        _.each(keywordMap, function (value, key) {
+            var currentVal = keywordMapping[key];
+            totalNumWords += value;
+            keywordMapping[key] = currentVal ? currentVal + value : value;
+        });
+
+        return keywordMapping;
+    }, {});
+    params.totalNumWords = totalNumWords;
+
+    return params;
+};
