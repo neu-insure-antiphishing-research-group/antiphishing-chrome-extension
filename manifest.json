@@ -30,6 +30,7 @@
       "js/background/safebrowsing/check.js",
       "js/background/secprototype.js",
       "js/background/database.js",
+      "js/background/keywords.js",
       "js/background/notifier.js"
     ]
   },

@@ -122,3 +122,11 @@
 	* Added temporary values, which will be updated as soon as correct keywords are obtained from Harshit.
 * Word frequency mapping is passed to our security prototype algorithm analysis function for final review.
 * Fixing bug where 'tel:' links were breaking Google Safe Browsing check
+
+## 11/15/2017 - Mike
+* Fixing a bug where plaintext message splitting would fail and then analysis would not occur.
+* Adding keyword mapping aggregation code for a single lookup table.
+* Adding code to check for keyword matches against the keyword list.
+	* Currently tallies the number of matches
+	* Also currently tallying the total number of words in all emails (in case the algorithm uses a ratio)
+* Development is now blocked until Roshan, Harshit, and/or Anurag send me the list of keywords and the algorithm pseudo code so that I can begin implementing those aspects.  Without the keywords or algorithm pseudo code, I cannot proceed with the development aspect as all other components have been implemented thusfar. 

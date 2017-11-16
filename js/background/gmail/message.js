@@ -82,7 +82,7 @@ this.parseHrefFromATag = function (aTag) {
  */
 this.createWordMapFromMessage = function (emailMessage) {
     const splitItem = /\s|\r|\n|\t/g; // space
-    var words = emailMessage && emailMessage.text.split(splitItem);
+    var words = emailMessage && emailMessage.text && emailMessage.text.split(splitItem);
 
     return _.countBy(words, function(word) {
         return word;
