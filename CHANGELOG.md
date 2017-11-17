@@ -129,4 +129,12 @@
 * Adding code to check for keyword matches against the keyword list.
 	* Currently tallies the number of matches
 	* Also currently tallying the total number of words in all emails (in case the algorithm uses a ratio)
-* Development is now blocked until Roshan, Harshit, and/or Anurag send me the list of keywords and the algorithm pseudo code so that I can begin implementing those aspects.  Without the keywords or algorithm pseudo code, I cannot proceed with the development aspect as all other components have been implemented thusfar. 
+* Development is now blocked until Roshan, Harshit, and/or Anurag send me the list of keywords and the algorithm pseudo code so that I can begin implementing those aspects.  Without the keywords or algorithm pseudo code, I cannot proceed with the development aspect as all other components have been implemented thusfar.
+
+## 11/17/2017 - Mike
+* Deriving domains of email links and adding to analysis object.
+* Rewriting algorithm function to make decisions and flow clearer.
+* Adding the URL whitelisting check based on pseudocode that was provided yesterday (11/16/17).
+	* Modified a little based on what is technically feasible given the remaining time left in the semester.
+	* Helper functions for keyword checks and domain whitelisting checks
+* Keywords will be added in next commit.

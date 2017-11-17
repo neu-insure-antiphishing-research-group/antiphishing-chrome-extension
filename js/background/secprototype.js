@@ -30,26 +30,63 @@ this.triggerEmailAnalysis = function (threadId) {
 };
 
 /**
- * Placeholder function for handling our algorithm/email analysis.
+ * Algorithm for our behavioral analysis of emails
  * @param params object containing the user's interests and thread emails
- * @returns {boolean}
+ * @returns {boolean} true --> is a phishing email, false --> not a phishing email
  */
 function analyzeEmail (params) {
     console.log(params);
 
-    // TODO: currently our prototype will detect phishing if and only if Google's Safe Browsing API returns a threat
+    // If there are no links, then there is no phishing attack
+    if (params.emailLinks.length === 0) {
+        return false;
+    }
+    // If there are threats registered at any of the links
+    else if (params.linkThreats.length > 0) {
+        return true;
+    }
 
+    var numKeywordMatches = checkForKeywordMatches(params.keywordMap);
+    var allLinkDomainsWhitelisted = areLinkDomainsWhitelisted(params.interests, params.linkDomains);
+
+    if (numKeywordMatches > 0 && !allLinkDomainsWhitelisted) {
+        return true;
+    }
+
+    // otherwise, no triggers were activated
+    return false;
+}
+
+/**
+ * Checks for keyword matches and returns the number of matches
+ * @param keywordMap map of words to their frequencies
+ * @returns {number} number of occurrences of phishing keywords
+ */
+function checkForKeywordMatches(keywordMap) {
     var numKeywordMatches = 0;
     _.each(PHISHING_KEYWORDS, function (phishingKeyword) {
-        if (params.keywordMap[phishingKeyword]) {
+        if (keywordMap[phishingKeyword]) {
             numKeywordMatches++;
         }
     });
+    return numKeywordMatches;
+}
 
-    console.log('Number of keyword matches: ' + numKeywordMatches);
+/**
+ * Checks to see if all links in the email are whitelisted per user's interests
+ * @param interests {object} user interests database object
+ * @param domains {list[string]} URL domains appearing in email links
+ * @returns {boolean} true --> all domains whitelisted, false --> other domains appear (phishing attack?)
+ */
+function areLinkDomainsWhitelisted(interests, domains) {
+    var userAcctDomainWhitelist = [];
+    _.each(interests, function (value, interestKey) {
+        if (value.userHoldsAccount) {
+            userAcctDomainWhitelist.concat(value.urls);
+        }
+    });
 
-    // return our algorithm's result in order to notify the user
-    //  false --> no phishing detected
-    //  true  --> phishing detected
-    return params.linkThreats.length;
+    return _.reduce(domains, function (acc, domain) {
+        return acc && _.contains(userAcctDomainWhitelist, domain);
+    }, true);
 }

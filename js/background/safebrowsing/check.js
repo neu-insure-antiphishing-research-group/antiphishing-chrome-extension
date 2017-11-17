@@ -55,6 +55,13 @@ function responseParser(response) {
     return [];
 }
 
+function extractDomain(link) {
+    var indexOfProtocolSlashes = link.indexOf('://'),
+        indexOfFirstPathSlash = link.indexOf('/', indexOfProtocolSlashes + 3);
+
+    return link.substring(indexOfProtocolSlashes + 3, indexOfFirstPathSlash);
+}
+
 /**
  * Helper function for secprototype.js which performs a single threat check against all email links in the thread.
  * @param params
@@ -64,11 +71,24 @@ this.fetchSafeBrowsingInformation = function (params) {
     var emailLinks = _.flatten(_.pluck(params.emails, 'links'));
     // Remove any email 'mailto:' or 'tel:' type links (Google's API doesn't check these and errors out).
     emailLinks = _.reject(emailLinks, function (link) {
-        return link.indexOf('mailto:') === 0 || link.indexOf('tel:') === 0;
+        return link.indexOf('mailto:') === 0 || link.indexOf('tel:') === 0 || link === '';
     });
 
-    return safeBrowsingCheck(emailLinks)
+    uniqueDomains = _.uniq(_.map(emailLinks, extractDomain));
+    console.log(uniqueDomains);
+
+    // If there are no links in the email, then don't make the safe browsing API call
+    if (emailLinks.length === 0) {
+        params.emailLinks = [];
+        params.linkDomains = [];
+        params.linkThreats = [];
+        return params;
+    }
+
+    return safeBrowsingCheck(emailLinks.concat(uniqueDomains))
         .then(function (threats) {
+            params.emailLinks = emailLinks;
+            params.linkDomains = uniqueDomains;
             params.linkThreats = threats;
             return params;
         });
