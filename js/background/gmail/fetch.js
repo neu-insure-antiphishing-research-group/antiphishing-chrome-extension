@@ -3,6 +3,8 @@
  * Email Processing Functionality
  */
 
+const URL_LINK_REGEX = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/g;
+
 /**
  * Retrieves a single email by id
  * @param threadId {String} message thread id
@@ -60,9 +62,12 @@ function processSingleEmail (email) {
 
     // If an HTML body part exists for the message, convert it to a DOM representation via Jquery
     if (msg.emailMessage.html) {
+        var htmlMessageString = JSON.parse(JSON.stringify(msg.emailMessage.html));
         msg.emailMessage.html = $.parseHTML(msg.emailMessage.html);
-        var allATags = $('a', msg.emailMessage.html);
-        msg.links = _.map(allATags, parseHrefFromATag);
+        var allATags = $('a', msg.emailMessage.html),
+            regexLinks = htmlMessageString.match(URL_LINK_REGEX);
+
+        msg.links = _.uniq(_.map(allATags, parseHrefFromATag).concat(regexLinks));
     }
 
     return msg;
