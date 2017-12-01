@@ -138,3 +138,8 @@
 	* Modified a little based on what is technically feasible given the remaining time left in the semester.
 	* Helper functions for keyword checks and domain whitelisting checks
 * Keywords will be added in next commit.
+
+## 12/1/2017 - Mike
+* Fixed domain parsing bugs which caused the domain to be incorrectly parsed.
+* Added an alternative approach to parse links from the messages for good measure.
+* Adding a screenshot from the testing phase, which correctly identified a phishing attack.

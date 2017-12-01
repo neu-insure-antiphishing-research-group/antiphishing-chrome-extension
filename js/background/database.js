@@ -4,6 +4,12 @@
  */
 
 const interestUrlWhitelist = {
+    email: {
+        zimbra: {
+            name: 'CCIS Zimbra',
+            urls: ['zimbra.ccs.neu.edu', 'zimbra.ccis.neu.edu', 'ccs.neu.edu', 'ccis.neu.edu', 'www.zimbra.com', 'sts.northeastern.edu', 'www.northeastern.edu', 'www.my.northeastern.edu', 'www.myneu.neu.edu', 'library.northeastern.edu', 'onesearch.library.northeastern.edu', 'nuonline.neu.edu']
+        }
+    },
     banks: {
         bankOfAmerica: {
             name: 'Bank of America',

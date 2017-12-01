@@ -1,4 +1,13 @@
 const PHISHING_KEYWORDS = [
+    'mailbox',
+    'Zimbra',
+    'quota',
     'urgent',
-    'removed'
+    'exceeded',
+    'account',
+    'ITS',
+    'Library',
+    'IT',
+    'helpdesk',
+    'help desk'
 ];
