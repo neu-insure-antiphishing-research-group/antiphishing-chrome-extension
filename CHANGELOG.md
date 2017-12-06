@@ -143,3 +143,7 @@
 * Fixed domain parsing bugs which caused the domain to be incorrectly parsed.
 * Added an alternative approach to parse links from the messages for good measure.
 * Adding a screenshot from the testing phase, which correctly identified a phishing attack.
+
+## 12/6/2017 - Mike
+* Fixing a few remaining issues prior to final testing.
+* Adding ITS Library interest and whitelisted URLs for testing.

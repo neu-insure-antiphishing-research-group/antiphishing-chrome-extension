@@ -82,7 +82,7 @@ function areLinkDomainsWhitelisted(interests, domains) {
     var userAcctDomainWhitelist = [];
     _.each(interests, function (value, interestKey) {
         if (value.userHoldsAccount) {
-            userAcctDomainWhitelist.concat(value.urls);
+            userAcctDomainWhitelist = userAcctDomainWhitelist.concat(value.urls);
         }
     });
 
