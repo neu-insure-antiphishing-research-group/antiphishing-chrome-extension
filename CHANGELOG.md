@@ -148,3 +148,5 @@
 ## 12/6/2017 - Mike
 * Fixing a few remaining issues prior to final testing.
 * Adding ITS Library interest and whitelisted URLs for testing.
+* Updated screenshots and screenshots of test results - also serves as documentation of test email messages.
+* With 12 test emails (6 spear-phishing, 6 non-phishing), the prototype correctly categorized 100% of the emails.
