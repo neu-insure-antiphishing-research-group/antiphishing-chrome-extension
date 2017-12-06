@@ -10,6 +10,12 @@ const interestUrlWhitelist = {
             urls: ['zimbra.ccs.neu.edu', 'zimbra.ccis.neu.edu', 'ccs.neu.edu', 'ccis.neu.edu', 'www.zimbra.com', 'sts.northeastern.edu', 'www.northeastern.edu', 'www.my.northeastern.edu', 'www.myneu.neu.edu', 'library.northeastern.edu', 'onesearch.library.northeastern.edu', 'nuonline.neu.edu']
         }
     },
+    services: {
+        itsLibrary: {
+            name: 'ITS Library',
+            urls: ['library.neu.edu', 'library.northeastern.edu', 'onesearch.neu.edu']
+        }
+    },
     banks: {
         bankOfAmerica: {
             name: 'Bank of America',
@@ -22,7 +28,7 @@ const interestUrlWhitelist = {
             urls: ['facebook.com', 'messenger.com', 'fb.com']
         }
     },
-    services: {
+    stores: {
         apple: {
             name: 'Apple',
             urls: ['apple.com', 'mac.com', 'iphone.com']
