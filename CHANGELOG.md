@@ -140,6 +140,7 @@
 * Keywords will be added in next commit.
 
 ## 12/1/2017 - Mike
+* Adds specific keywords and URLs for testing.
 * Fixed domain parsing bugs which caused the domain to be incorrectly parsed.
 * Added an alternative approach to parse links from the messages for good measure.
 * Adding a screenshot from the testing phase, which correctly identified a phishing attack.
